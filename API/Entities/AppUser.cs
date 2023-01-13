@@ -11,5 +11,7 @@ namespace API.Entities
         [Key] //uses using System.ComponentModel.DataAnnotations;
         public int Id { get; set; } //a convention used by EF
         public string UserName { get; set; }
+        public byte[] PassWordHash { get; set; }
+        public byte[] PassWordSalt { get; set; }
     }
 }
