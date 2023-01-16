@@ -15,6 +15,8 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
+
+//Add token service
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
