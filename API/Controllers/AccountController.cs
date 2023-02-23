@@ -20,6 +20,7 @@ namespace API.Controllers
         private readonly ITokenService _tokenService;
         public AccountController(DataContext context, ITokenService tokenService){
             _context = context; 
+            _tokenService = tokenService;
         }
 
         //To Check if username already exists

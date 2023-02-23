@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using API.Data;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
-
+[AllowAnonymous]
     public class UsersController : BaseApiController
     {
         private readonly DataContext context;
@@ -18,12 +19,15 @@ namespace API.Controllers
         this.context = context;
        } 
 
-       [HttpGet]
+    [Authorize]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers(){
     var users = await context.Users.ToListAsync(); //Users is die naam van die databasis
     return users;
     }
 
+
+   
     [HttpGet("{id}")]
     public async Task<ActionResult<AppUser>> GetUser(int id){
     var user = await context.Users.FindAsync(id);
